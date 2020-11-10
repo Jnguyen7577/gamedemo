@@ -11,13 +11,29 @@ function setup() {
 }
 
 function draw() {
-if (state === 'title') {
-	title();
-  cnv.mouseClicked(titleMouseClicked);
- } else if (state === 'level 1'){
- 	level1();
- cnv.mouseClicked(level1MouseClicked);
- }
+
+switch (state){
+	case 'title': 
+	 title();
+	 cnv.mouseClicked(titleMouseClicked);
+	 break;
+	case 'level 1':
+	 level1();
+	 cnv.mouseClicked(level1MouseClicked);
+	 break;
+	default:
+	 break;
+}
+
+//if (state === 'title') {
+//	title();
+//  cnv.mouseClicked(titleMouseClicked);
+// } else if (state === 'level 1' && points > 50){
+// 	level1();
+// cnv.mouseClicked(level1MouseClicked);
+// } else {
+
+// }
 }
 
 function title() {
