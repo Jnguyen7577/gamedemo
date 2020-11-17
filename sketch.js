@@ -89,15 +89,24 @@ function level1(){
 
 	coin.display();
 	coin.move();
+
+	// check for collision, if collision point will increase by 1
+
+	if (dist(player.x, player.y, coin.x, coin.y) <= (player.r + coin.r) /2){
+		points++;
+		console.log(points);
+	}
+
+	text(`Points: ${points}`, w/4, h - 30);
 }
 
 function level1MouseClicked() {
- points++;
- console.log('points = ' + points);
+ //points++;
+ //console.log('points = ' + points);
 
- if (points >= 10){
- 	state = 'you win';
- }  
+ //if (points >= 10){
+ //	state = 'you win';
+ //}  
 
 }
 
