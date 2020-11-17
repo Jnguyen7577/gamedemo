@@ -113,6 +113,9 @@ function level1(){
 		points++;
 		console.log(points);
 		coins.splice(i, 1);
+	} else if (coins[i].y > h){
+		coins.splice(i, 1);
+		console.log('coin is out of town');
 	}
 }
 	text(`Points: ${points}`, w/4, h - 30);
