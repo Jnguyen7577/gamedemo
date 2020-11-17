@@ -10,9 +10,11 @@ let h = 600;
 let player;
 let coins = [];
 let playerImg;
+let coinImg;
 
 function preload() {
-	playerImg = loadImage('asset/tatsuo.png')
+	playerImg = loadImage('assets/tatsuo.png')
+	coinImg = loadImage('assets/strawberry.png')
 }
 
 function setup() {
