@@ -11,10 +11,17 @@ let player;
 let coins = [];
 let playerImg;
 let coinImg;
+let bgImg;
+let titleImg;
+
+var eatSound;
 
 function preload() {
-	playerImg = loadImage('assets/tatsuo.png')
-	coinImg = loadImage('assets/strawberry.png')
+	playerImg = loadImage('assets/char.png')
+	coinImg = loadImage('assets/fruit.png')
+	bgImg = loadImage('assets/bg.png')
+	titleImg = loadImage('assets/title.png')
+	eatSound = loadSound('sounds/eat.mp3')
 }
 
 function setup() {
@@ -29,6 +36,7 @@ function setup() {
 }
 
 function draw() {
+
 
 switch (state){
 	case 'title': 
@@ -72,15 +80,42 @@ function keyPressed() {
 	}
 }
 
+function keyReleased() {
+
+	let numberKeysPressed = 0;
+
+	if (keyIsDown(LEFT_ARROW)){
+		numberKeysPressed++;
+	}
+
+	if (keyIsDown(RIGHT_ARROW)){
+		numberKeysPressed++;
+	}
+	
+	if (keyIsDown(DOWN_ARROW)){
+		numberKeysPressed++;
+	}
+
+	if (keyIsDown(UP_ARROW)){
+		numberKeysPressed++;			
+	}
+
+	console.log(numberKeysPressed);
+
+	if (numberKeysPressed == 0){
+	player.direction = 'still';
+	}
+}
+
 function title() {
-  background(0);
+  background(titleImg);
   textSize(80);
   fill(255);
   textAlign(CENTER);
-  text('My Game', w/2, h/5);
+  text('', w/2, h/5);
 
   textSize(30);
-  text('Click anywhere to start', w/2, h/2);
+  text('Click to start', w/2, h/2);
 }
 
 function titleMouseClicked() {
@@ -89,7 +124,7 @@ function titleMouseClicked() {
 }
 
 function level1(){
-	background(50, 150, 200);
+	background(bgImg);
 	//text('click for points', w/2, h - 30);
 
 	if (random(1) <= 0.01){
@@ -145,6 +180,4 @@ function youWinMouseClicked() {
 state = 'level 1';
 points= 0;
 }
-
-
 
