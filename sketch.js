@@ -13,6 +13,7 @@ let playerImg;
 let coinImg;
 let bgImg;
 let titleImg;
+let button;
 
 var eatSound;
 var bgSound;
@@ -38,6 +39,8 @@ function setup() {
 
   //bgm
   bgSound.play();
+
+  button = createButton('Quit');
 }
 
 function draw() {
@@ -147,6 +150,11 @@ function level1(){
 	coins[i].display();
 	coins[i].move();
 
+  button.position(w * 1.4, h + 50);
+  button.mousePressed(changeBG);
+  button.size(100, 23);
+
+
 	}
 
 	// check for collision, if collision point will increase by 1 and splice
@@ -215,6 +223,9 @@ function youLose() {
   stroke(255);
   text('Game over', w/2, h/2);
 
+  textSize(16);
+  text('[Did you enjoy killing them?]', w/2, h * 1/4);
+
   textSize(30);
   text('Click to redeem yourself', w/2, h * 3/4);
 }
@@ -223,3 +234,8 @@ function youLoseMouseClicked() {
 state = 'title';
 points= 0;
 }
+
+function changeBG() {
+  let val = random(0);
+  background(val);
+  }
