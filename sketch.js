@@ -148,15 +148,28 @@ function level1(){
 		points++;
 		console.log(points);
 		coins.splice(i, 1);
+		eatSound = loadSound('sounds/eat.mp3');
 	} else if (coins[i].y > h){
 		coins.splice(i, 1);
+		eatSound = loadSound('sounds/eat.mp3');
 		console.log('coin is out of town');
 	}
 }
-	text(`Points: ${points}`, w/4, h - 30);
+	text(`Kills: ${points}`, w/4, h - 30);
+
+//if player has more than 15+ points then set game to gameover
+//or
+//"draw" button to canvas and when people click button and the 
+//number of points decide if they win or lose
+
 }
 
 function level1MouseClicked() {
+
+//	notes from Lark: if mouse x is bigger than one side and small than the other side and mouse y is bigger than one side and smaller on other side
+//		if points are greater than the minimum and points are less than maximum they would win
+//			game state "victory"
+
  //points++;
  //console.log('points = ' + points);
 
