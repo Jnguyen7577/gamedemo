@@ -15,6 +15,7 @@ let bgImg;
 let titleImg;
 
 var eatSound;
+var bgSound;
 
 function preload() {
 	playerImg = loadImage('assets/char.png')
@@ -22,6 +23,7 @@ function preload() {
 	bgImg = loadImage('assets/bg.png')
 	titleImg = loadImage('assets/title.png')
 	eatSound = loadSound('sounds/eat.mp3')
+	bgSound = loadSound('sounds/bgmusic.mp3')
 }
 
 function setup() {
@@ -33,6 +35,9 @@ function setup() {
 
   // coins[0] = new Coin();
   coins.push(new Coin());
+
+  //bgm
+  bgSound.play();
 }
 
 function draw() {
@@ -146,12 +151,12 @@ function level1(){
 	for (let i = coins.length - 1; i >= 0; i--){
 	if (dist(player.x, player.y, coins[i].x, coins[i].y) <= (player.r + coins[i].r) /2){
 		points++;
+		eatSound.play();
 		console.log(points);
 		coins.splice(i, 1);
 		eatSound = loadSound('sounds/eat.mp3');
 	} else if (coins[i].y > h){
 		coins.splice(i, 1);
-		eatSound = loadSound('sounds/eat.mp3');
 		console.log('coin is out of town');
 	}
 }
