@@ -45,17 +45,21 @@ function draw() {
 
 switch (state){
 	case 'title': 
-	 title();
-	 cnv.mouseClicked(titleMouseClicked);
-	 break;
+	 	title();
+	 	cnv.mouseClicked(titleMouseClicked);
+	 	break;
 	case 'level 1':
-	 level1();
-	 cnv.mouseClicked(level1MouseClicked);
-	 break;
+	 	level1();
+	 	cnv.mouseClicked(level1MouseClicked);
+	 	break;
 	case 'you win':
-	 youWin();
-	 cnv.mouseClicked(youWinMouseClicked);
-	 break;
+	 	youWin();
+	 	cnv.mouseClicked(youWinMouseClicked);
+	 	break;
+	 case 'you lose':
+	 	youLose();
+	 	cnv.mouseClicked(youLoseMouseClicked);
+	 	break;
 	default:
 	 break;
 }
@@ -162,6 +166,12 @@ function level1(){
 }
 	text(`Kills: ${points}`, w/4, h - 30);
 
+	if (points >= 20){
+		state = 'you lose';
+	//} else if (points <= 0){
+	//	state = 'you lose';
+	}
+
 //if player has more than 15+ points then set game to gameover
 //or
 //"draw" button to canvas and when people click button and the 
@@ -191,11 +201,25 @@ function youWin() {
   text('YOU WIN', w/2, h/2);
 
   textSize(30);
-  text('Click anywhere to restart', w/2, h * 3/4);
+  text('Click to play again', w/2, h * 3/4);
 }
 
 function youWinMouseClicked() {
-state = 'level 1';
+state = 'title';
 points= 0;
 }
 
+function youLose() {
+ background(255, 50, 80);
+  textSize(80);
+  stroke(255);
+  text('Game over', w/2, h/2);
+
+  textSize(30);
+  text('Click to redeem yourself', w/2, h * 3/4);
+}
+
+function youLoseMouseClicked() {
+state = 'title';
+points= 0;
+}
