@@ -14,6 +14,7 @@ let coinImg;
 let bgImg;
 let titleImg;
 let button;
+let loseImg;
 
 var eatSound;
 var bgSound;
@@ -23,6 +24,8 @@ function preload() {
 	coinImg = loadImage('assets/fruit.png')
 	bgImg = loadImage('assets/bg.png')
 	titleImg = loadImage('assets/title.png')
+	loseImg = loadImage('assets/lose.png')
+
 	eatSound = loadSound('sounds/eat.mp3')
 	bgSound = loadSound('sounds/bgmusic.mp3')
 }
@@ -30,7 +33,7 @@ function preload() {
 function setup() {
   cnv = createCanvas(w, h);
 
-  textFont('monospace');
+  textFont('courier new');
 
   player = new Player();
 
@@ -218,7 +221,7 @@ points= 0;
 }
 
 function youLose() {
- background(255, 50, 80);
+ background(loseImg);
   textSize(80);
   stroke(255);
   text('Game over', w/2, h/2);
