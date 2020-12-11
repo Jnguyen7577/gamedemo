@@ -8,6 +8,8 @@ class Player {
 		this.direction = 'still';
 	}
 
+	
+
 	display(){
 		image(playerImg, this.x, this.y, this.r, this.r);
 		//rect(this.x, this.y, this.r, this.r);

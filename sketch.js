@@ -15,16 +15,22 @@ let bgImg;
 let titleImg;
 let button;
 let loseImg;
+let winImg;
 
 var eatSound;
 var bgSound;
+//var button; <<---from code train
+
+//var button = createButton("Quit"); <----also from code train
+//  button.mousePressed(youWin);
 
 function preload() {
-	playerImg = loadImage('assets/char.png')
+	playerImg = loadImage('assets/char.gif')
 	coinImg = loadImage('assets/fruit.png')
 	bgImg = loadImage('assets/bg.png')
 	titleImg = loadImage('assets/title.png')
 	loseImg = loadImage('assets/lose.png')
+	winImg = loadImage('assets/win.png')
 
 	eatSound = loadSound('sounds/eat.mp3')
 	bgSound = loadSound('sounds/bgmusic.mp3')
@@ -43,6 +49,7 @@ function setup() {
   //bgm
   bgSound.play();
 
+  //quit button
   button = createButton('Quit');
 }
 
@@ -154,8 +161,9 @@ function level1(){
 	coins[i].move();
 
   button.position(w * 1.4, h + 50);
-  button.mousePressed(changeBG);
+  button.mousePressed(youWin);
   button.size(100, 23);
+
 
 
 	}
@@ -206,13 +214,17 @@ function level1MouseClicked() {
 }
 
 function youWin() {
- background(255, 50, 80);
+ background(winImg);
   textSize(80);
-  stroke(255);
+  stroke(255, 0, 0);
+  strokeWeight(3);
   text('YOU WIN', w/2, h/2);
 
+  textSize(16);
+  text('[But do you want more kills?]', w/2, h * 1/4);
+
   textSize(30);
-  text('Click to play again', w/2, h * 3/4);
+  text('Click anywhere to try again', w/2, h * 3/4);
 }
 
 function youWinMouseClicked() {
